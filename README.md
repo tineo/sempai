@@ -33,5 +33,7 @@ sudo systemctl enable cron
 
 crontab -e
 
-*/5 * * * * /usr/bin/php /path/to/index.php
+
+# each 5min since 8am until 9pm
+*/5 8-21 * * * /usr/bin/php /path/to/index.php
 ```
