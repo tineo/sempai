@@ -2,7 +2,7 @@ sempai
 
 ```
 sudo apt-get update
-sudo apt-get -y install php php-zip php-mysql
+sudo apt-get -y install php php-zip php-mysql libapache2-mod-php
 
 https://getcomposer.org/download/
 
@@ -35,9 +35,18 @@ crontab -e
 
 
 # each 5min since 8am until 9pm 
-*/5 8-21 * * * /usr/bin/php /path/to/cron.php
+*/5 8-21 * * * /usr/bin/php /path/to/sempai/cron.php
 
 # each 5min since 8am until 9pm 
-*/5 13-23 * * * /usr/bin/php /path/to/cron.php
-*/5 0-2 * * * /usr/bin/php /path/to/cron.php
+*/5 13-23 * * * /usr/bin/php /path/to/sempai/cron.php
+*/5 0-2 * * * /usr/bin/php /path/to/sempai/cron.php
 ```
+
+```
+DocumentRoot /path/to/sempai
+<Directory /path/to/sempai>
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+`chmod -R 755 /path/to/sempai/..`
