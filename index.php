@@ -21,7 +21,7 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$sql = 'SELECT dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY timeRate';
+$sql = 'SELECT dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id asc';
 
 ?>
 <!DOCTYPE html>
