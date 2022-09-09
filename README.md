@@ -1,6 +1,6 @@
 sempai
 
-´´´
+```
 sudo apt-get update
 sudo apt-get -y install php php-zip php-mysql
 
@@ -9,10 +9,9 @@ https://getcomposer.org/download/
 sudo mv composer.phar /usr/local/bin/composer
 
 composer install
+```
 
-´´´
-
-´´´
+```
 create table tucambista
 (
 	id int auto_increment,
@@ -27,12 +26,12 @@ create table tucambista
 	constraint tucambista_pk
 		primary key (id)
 );
-´´´
+```
 
-´´´
+```
 sudo systemctl enable cron
 
 crontab -e
 
 */5 * * * * /usr/bin/php /path/to/index.php
-´´´
+```
