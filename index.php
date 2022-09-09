@@ -29,6 +29,10 @@ $res = $client->request('POST', '/api/transaction/quote?', [
 
 $data = json_decode($res->getBody());
 
+if ($res->getStatusCode() != 200) { // check api is ok
+    die();
+}
+
 $config = parse_ini_file("config.ini", true);
 
 $host = $config["database"]["host"];
