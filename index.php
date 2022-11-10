@@ -21,7 +21,12 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$sql = 'SELECT dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id asc';
+$limit="";
+if(!$_GET["o"]=="all"){
+    $limit = "LIMIT 1000";
+}
+
+$sql = 'SELECT dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id asc $limit';
 
 ?>
 <!DOCTYPE html>
