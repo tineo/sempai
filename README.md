@@ -2,7 +2,7 @@ sempai
 
 ```
 sudo apt-get update
-sudo apt-get -y install php php-zip php-mysql libapache2-mod-php
+sudo apt-get -y install php php-curl php-zip php-mysql libapache2-mod-php
 
 https://getcomposer.org/download/
 
