@@ -53,3 +53,10 @@ DocumentRoot /path/to/sempai
 
 
 `docker run --name redis -d -p 6379:6379 redis redis-server --requirepass "SUPER_SECRET_PASSWORD"`
+
+```
+sudo apt-get -y install redis-server
+sudo nano  /etc/redis/redis.conf
+- uncommnet #requirepass foobared
+
+```
