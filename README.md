@@ -58,5 +58,5 @@ DocumentRoot /path/to/sempai
 sudo apt-get -y install redis-server
 sudo nano  /etc/redis/redis.conf
 - uncommnet #requirepass foobared
-
+sudo service redis restart
 ```
