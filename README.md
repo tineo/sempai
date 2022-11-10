@@ -35,11 +35,11 @@ crontab -e
 
 
 # each 5min since 8am until 9pm 
-*/5 8-21 * * * /usr/bin/php /path/to/sempai/cron.php
+*/5 8-21 * * 1-6 /usr/bin/php /path/to/sempai/cron.php
 
 # each 5min since 8am until 9pm 
-*/5 13-23 * * * /usr/bin/php /path/to/sempai/cron.php
-*/5 0-2 * * * /usr/bin/php /path/to/sempai/cron.php
+*/5 13-23 * * 1-6 /usr/bin/php /path/to/sempai/cron.php
+*/5 0-2 * * 1-6 /usr/bin/php /path/to/sempai/cron.php
 ```
 
 ```
