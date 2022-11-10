@@ -1,5 +1,10 @@
+[notifications]
+min = 3.88
 [database]
 host = 0.0.0.0
 db = database
 user = user
 pass = password
+[twilio]
+sid    = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+token  = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

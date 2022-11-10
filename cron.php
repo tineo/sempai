@@ -3,6 +3,9 @@ require 'vendor/autoload.php';
 date_default_timezone_set('America/Lima');
 
 use GuzzleHttp\Client;
+use Twilio\Rest\Client as TwClient;
+
+$config = parse_ini_file("config.ini", true);
 
 $client = new Client([
     'base_uri' => 'https://apim.tucambista.pe',
@@ -33,7 +36,21 @@ if ($res->getStatusCode() != 200) { // check api is ok
     die();
 }
 
-$config = parse_ini_file("config.ini", true);
+if($data->offerReferenceRate < $config["notifications"]["min"]){
+    $sid    = $config["twilio"]["sid"];
+    $token    = $config["twilio"]["token"];
+    $twilio = new TwClient($sid, $token);
+
+    $message = $twilio->messages
+        ->create("whatsapp:", // to
+            array(
+                "from" => "whatsapp:+14155238886",
+                "body" => "El cambio bajo a {$data->offerReferenceRate}"
+            )
+        );
+
+    print($message->sid);
+}
 
 $host = $config["database"]["host"];
 $db   = $config["database"]["db"];
