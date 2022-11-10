@@ -2,7 +2,7 @@ sempai
 
 ```
 sudo apt-get update
-sudo apt-get -y install php php-curl php-zip php-mysql libapache2-mod-php
+sudo apt-get -y install php php-redis php-curl php-zip php-mysql libapache2-mod-php
 
 https://getcomposer.org/download/
 
@@ -50,3 +50,6 @@ DocumentRoot /path/to/sempai
 </Directory>
 ```
 `chmod -R 755 /path/to/sempai/..`
+
+
+`docker run --name redis -d -p 6379:6379 redis redis-server --requirepass "SUPER_SECRET_PASSWORD"`

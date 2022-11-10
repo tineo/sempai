@@ -36,21 +36,29 @@ if ($res->getStatusCode() != 200) { // check api is ok
     die();
 }
 
-if($data->offerReferenceRate < $config["notifications"]["min"]){
-    $sid    = $config["twilio"]["sid"];
-    $token    = $config["twilio"]["token"];
-    $twilio = new TwClient($sid, $token);
+$redis = new Redis();
+$redis->connect($config["redis"]["host"], 6379);
+$redis->auth($config["redis"]["auth"]);
+if(!$redis->get("offerMin")){
+    $redis->set("offerMin", $data->offerReferenceRate);
+}else{
+    if($redis->get("offerMin") < $data->offerReferenceRate){
 
-    $message = $twilio->messages
-        ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
-            array(
-                "from" => "whatsapp:+14155238886",
-                "body" => "El cambio bajo a {$data->offerReferenceRate}"
-            )
-        );
+        $redis->set("offerMin", $data->offerReferenceRate);
 
-    print($message->sid);
+        $twilio = new TwClient($config["twilio"]["sid"], $config["twilio"]["token"]);
+
+        $message = $twilio->messages
+            ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
+                array(
+                    "from" => "whatsapp:+14155238886",
+                    "body" => "El cambio bajo a {$data->offerReferenceRate}"
+                )
+            );
+        print($message->sid);
+    }
 }
+
 
 $host = $config["database"]["host"];
 $db   = $config["database"]["db"];

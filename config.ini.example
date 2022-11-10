@@ -9,3 +9,6 @@ pass = password
 [twilio]
 sid    = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 token  = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[redis]
+host = 127.0.0.1
+auth = redispassword
