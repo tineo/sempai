@@ -51,7 +51,7 @@ if(!$redis->get("offerLast")){
             ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
                 array(
                     "from" => "whatsapp:+14155238886",
-                    "body" => "↓ {$data->offerReferenceRate}"
+                    "body" => "↑ {$data->offerReferenceRate}"
                 )
             );
         print($message->sid);
@@ -61,7 +61,7 @@ if(!$redis->get("offerLast")){
             ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
                 array(
                     "from" => "whatsapp:+14155238886",
-                    "body" => "↑ {$data->offerReferenceRate}"
+                    "body" => "↓ {$data->offerReferenceRate}"
                 )
             );
         print($message->sid);
