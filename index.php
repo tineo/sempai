@@ -23,7 +23,7 @@ try {
 
 $limit="";
 if(!$_GET["o"]=="all"){
-    $limit = "LIMIT 1000";
+    $limit = "LIMIT 3000";
 }
 
 $sql = "select dateRate, timeRate, offerRate, bidRate from (SELECT id, dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id DESC {$limit}) tc ORDER BY id ASC";
@@ -46,7 +46,7 @@ $sql = "select dateRate, timeRate, offerRate, bidRate from (SELECT id, dateRate,
   const labels = [
     <?php foreach ($pdo->query($sql) as $row) {   
             $dateRs = new DateTime($row['dateRate']);
-            $dateFmt = $dateRs->format('m.d');
+            $dateFmt = $dateRs->format('d.m');
             $timeFmt = substr($row['timeRate'],0,5);
 
             print "'".$dateFmt." ".$timeFmt."',"; 
