@@ -42,11 +42,10 @@ $redis->auth($config["redis"]["auth"]);
 if(!$redis->get("offerLast")){
     $redis->set("offerLast", $data->offerReferenceRate);
 }else{
+    $twilio = new TwClient($config["twilio"]["sid"], $config["twilio"]["token"]);
     if($redis->get("offerLast") < $data->offerReferenceRate){
-        
-        $redis->set("offerLast", $data->offerReferenceRate);
 
-        $twilio = new TwClient($config["twilio"]["sid"], $config["twilio"]["token"]);
+        $redis->set("offerLast", $data->offerReferenceRate);
 
         $message = $twilio->messages
             ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
@@ -57,7 +56,6 @@ if(!$redis->get("offerLast")){
             );
         print($message->sid);
     }else if($redis->get("offerLast") > $data->offerReferenceRate){
-        $twilio = new TwClient($config["twilio"]["sid"], $config["twilio"]["token"]);
 
         $message = $twilio->messages
             ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
