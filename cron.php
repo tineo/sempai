@@ -35,14 +35,14 @@ $data = json_decode($res->getBody());
 if ($res->getStatusCode() != 200) { // check api is ok
     die();
 }
-
+echo $data->offerReferenceRate;
 if($data->offerReferenceRate < $config["notifications"]["min"]){
     $sid    = $config["twilio"]["sid"];
     $token    = $config["twilio"]["token"];
     $twilio = new TwClient($sid, $token);
 
     $message = $twilio->messages
-        ->create("whatsapp:", // to
+        ->create("whatsapp:{$config["notifications"]["wsp_number"]}", // to
             array(
                 "from" => "whatsapp:+14155238886",
                 "body" => "El cambio bajo a {$data->offerReferenceRate}"

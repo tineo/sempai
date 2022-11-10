@@ -1,5 +1,6 @@
 [notifications]
-min = 3.88
+min = 3.9
+wsp_number = +51996666666
 [database]
 host = 0.0.0.0
 db = database
