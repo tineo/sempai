@@ -35,7 +35,7 @@ $data = json_decode($res->getBody());
 if ($res->getStatusCode() != 200) { // check api is ok
     die();
 }
-echo $data->offerReferenceRate;
+
 if($data->offerReferenceRate < $config["notifications"]["min"]){
     $sid    = $config["twilio"]["sid"];
     $token    = $config["twilio"]["token"];
