@@ -26,7 +26,7 @@ if(!$_GET["o"]=="all"){
     $limit = "LIMIT 1000";
 }
 
-$sql = "select * from (SELECT id, dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id DESC {$limit}) ORDER BY id ASC";
+$sql = "select dateRate, timeRate, offerRate, bidRate from (SELECT id, dateRate, timeRate, offerRate, bidRate FROM tucambista ORDER BY id DESC {$limit}) tc ORDER BY id ASC";
 
 ?>
 <!DOCTYPE html>
