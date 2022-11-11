@@ -12,21 +12,18 @@ $client = new Client([
     'timeout'  => 2.0,
 ]);
 
-
 $res = $client->request('POST', '/api/transaction/quote?', [
     'headers'        => [
         'Content-Type' => 'application/json',
         'Ocp-Apim-Subscription-Key' => 'e4b6947d96a940e7bb8b39f462bcc56d;product=tucambista-production'
     ],
     'json' => [
-        
             "amount"  => 1000,
             "buyOrSell" => "SELL",
             "ccy" => "PEN",
             "totalCreditsToUse" => 0,
             "cancelPromotionCode" => "",
             "promotionCode" => ""
-        
     ]
 ]);
 
@@ -58,8 +55,6 @@ if(!$redis->get("offerLast")){
             );
         print($message->sid);
     }
-
-
 }
 
 $host = $config["database"]["host"];
@@ -83,8 +78,6 @@ try {
 
 $dateRate =  date("Y-m-d");
 $timeRate = date("H:i:d");
-
-
 
 $sql = "INSERT INTO tucambista (bidRate, offerRate, bidReferenceRate, offerReferenceRate, dateRate, timeRate) VALUES (?,?,?,?,?,?)";
 $stmt= $pdo->prepare($sql);
