@@ -65,8 +65,8 @@ $sql = "select dateRate, timeRate, offerRate, bidRate from (SELECT id, dateRate,
     },
     {
       label: 'Tu cambista bidRate',
-      backgroundColor: 'rgb(132, 255, 132)',
-      borderColor: 'rgb(132, 255, 132)',
+      backgroundColor: 'rgb(30, 180, 70)',
+      borderColor: 'rgb(30, 180, 70)',
       borderWidth: 1,
       radius: 0,
       data: [<?php foreach ($pdo->query($sql) as $row) {   print $row['bidRate'].","; }?>]
